@@ -1,50 +1,35 @@
-name: Build Dev
+name: "build-dev"
 on: [push]
 
 jobs:
-  release:
+  test-tauri:
     strategy:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest, windows-latest]
+
     runs-on: ${{ matrix.platform }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Node.js setup
+      - name: Setup NodeJS
         uses: actions/setup-node@v1
         with:
           node-version: 16
 
-      - name: Rust setup
+      - name: Install Rust Stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
 
-      - name: Install dependencies (ubuntu only)
+      - name: Install Dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
 
-    - name: Install Cargo
-      run: cargo install tauri-cli --version "^1.0.0"  
+      - name: Install Tauri CLI
+        run: cargo install tauri-cli
 
-      - name: Build (MacOS)
-        if: matrix.platform == 'macos-latest'
-        run: |
-          yarn && yarn build
-          cargo install tauri-cli --version "^1.0.0"
-          cargo tauri build
-          tauri build --target aarch64-apple-darwin
-          tauri build --target x86_64-apple-darwin
-
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tagName: v__VERSION__ # tauri-action replaces \_\_VERSION\_\_ with the app version
-          releaseName: "v__VERSION__"
-          releaseBody: "See the assets to download this version and install."
-          releaseDraft: true
-          prerelease: false
+      - name: Build App
+        run: cargo tauri build
