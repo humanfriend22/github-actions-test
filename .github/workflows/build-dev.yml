@@ -42,8 +42,8 @@ jobs:
       - name: Build App
         run: cargo tauri build
 
-      - name: Get Dir Name
-        run: |
-          pwd
-          ls src-tauri/target/release/bundle/macos
-          ls src-tauri/target/release/bundle/dmg
+      - name: Read dmg Dir
+        run: ls src-tauri/target/release/bundle/dmg
+
+      - name: Read MacOS Dir
+        run: ls src-tauri/target/release/bundle/macos
