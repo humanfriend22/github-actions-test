@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-latest]
+        platform: [macos-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -45,4 +45,5 @@ jobs:
       - name: Get Dir Name
         run: |
           pwd
-          ls src-tauri/target/release/bundle
+          ls src-tauri/target/release/bundle/macos
+          ls src-tauri/target/release/bundle/dmg
