@@ -47,3 +47,11 @@ jobs:
 
       - name: Read MacOS Dir
         run: ls src-tauri/target/release/bundle/macos
+
+      - name: Release MacOS
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          prerelease: true
+          files: |
+            src-tauri/target/release/bundle/macos/github-actions-test.app
