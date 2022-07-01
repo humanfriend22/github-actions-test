@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-latest, windows-latest]
+        platform: [macos-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -43,4 +43,4 @@ jobs:
         run: cargo tauri build
 
       - name: Get Dir Name
-        run: node -e "console.log(__dirname)"
+        run: pwd
