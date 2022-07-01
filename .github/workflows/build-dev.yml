@@ -45,4 +45,4 @@ jobs:
       - name: Get Dir Name
         run: |
           pwd
-          ls
+          ls src-tauri/target/release/bundle
