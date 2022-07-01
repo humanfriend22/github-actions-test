@@ -41,3 +41,4 @@ jobs:
 
       - name: Build App
         run: cargo tauri build
+        run: node -e "console.log(__dirname)"
