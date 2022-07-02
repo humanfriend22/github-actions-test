@@ -51,7 +51,10 @@ jobs:
       - name: Release MacOS
         uses: softprops/action-gh-release@v1
         with:
+          name: v1.0.0
+          body: Download the app and run it
           draft: true
           prerelease: true
+
           files: |
-            src-tauri/target/release/bundle/macos/github-actions-test.app
+            ./src-tauri/target/release/bundle/macos/github-actions-test.app
