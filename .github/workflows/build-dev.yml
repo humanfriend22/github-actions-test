@@ -46,10 +46,10 @@ jobs:
         run: yarn tauri build
 
       - name: Read MacOS Dir
-        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents
+        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/Resources
         
       - name: Read MacOS Dir 2
-        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Resources
+        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/MacOS
 
       - name: Copy File
         run: cp src-tauri/target/release/bundle/macos/github-actions-test.app github-actions-test.app
