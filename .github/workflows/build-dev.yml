@@ -2,7 +2,7 @@ name: "build-dev"
 on: [push]
 
 jobs:
-  test-tauri:
+  build-dev:
     strategy:
       fail-fast: false
       matrix:
@@ -45,11 +45,8 @@ jobs:
       - name: Build App
         run: yarn tauri build
 
-      - name: Read dmg Dir
-        run: ls src-tauri/target/release/bundle/dmg
-
       - name: Read MacOS Dir
-        run: ls src-tauri/target/release/bundle/macos
+        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app
 
       - name: Copy File
         run: cp src-tauri/target/release/bundle/macos/github-actions-test.app github-actions-test.app
