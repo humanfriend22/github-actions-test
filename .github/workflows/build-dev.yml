@@ -55,6 +55,5 @@ jobs:
           body: Download the app and run it
           draft: true
           prerelease: true
-
           files: |
-            ./src-tauri/target/release/bundle/macos/github-actions-test.app
+            src-tauri/target/release/bundle/macos/github-actions-test.app
