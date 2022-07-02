@@ -48,6 +48,9 @@ jobs:
       - name: Read MacOS Dir
         run: ls src-tauri/target/release/bundle/macos
 
+      - name: Copy File
+        run: cp src-tauri/target/release/bundle/macos/github-actions-test.app github-actions-test.app
+
       - name: Release MacOS
         uses: softprops/action-gh-release@v1
         with:
@@ -56,4 +59,4 @@ jobs:
           draft: true
           prerelease: true
           files: |
-            src-tauri/target/release/bundle/macos/
+            github-actions-test.app
