@@ -49,7 +49,7 @@ jobs:
         run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/Resources
         
       - name: Read MacOS Dir 2
-        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/MacOS/github-actions-test.app
+        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/MacOS/github-actions-test
 
       - name: Copy File
         run: cp src-tauri/target/release/bundle/macos/github-actions-test.app github-actions-test.app
