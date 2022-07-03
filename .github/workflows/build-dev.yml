@@ -1,5 +1,5 @@
 name: "build-dev"
-on: [push]
+#on: [push]
 
 jobs:
   build-dev:
