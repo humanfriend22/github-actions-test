@@ -69,8 +69,8 @@ jobs:
       - name: Build App
         if: matrix.platform == 'macos-latest'
         run: |
-        yarn build --target x86_64-apple-darwin
-        yarn build --target aarch64-apple-darwin
+          yarn build --target x86_64-apple-darwin
+          yarn build --target aarch64-apple-darwin
 
       - uses: tauri-apps/tauri-action@v0
         env:
