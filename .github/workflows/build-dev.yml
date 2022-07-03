@@ -42,14 +42,14 @@ jobs:
 
       # Customize:
 
+      - name: Install Tree
+        run: brew install tree
+
       - name: Build App
         run: yarn tauri build
 
       - name: Read MacOS Dir
-        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/Resources
-        
-      - name: Read MacOS Dir 2
-        run: ls src-tauri/target/release/bundle/macos/github-actions-test.app/Contents/MacOS/github-actions-test
+        run: tree
 
       - name: Copy File
         run: cp src-tauri/target/release/bundle/macos/github-actions-test.app github-actions-test.app
