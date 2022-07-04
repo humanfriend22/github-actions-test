@@ -84,10 +84,8 @@ jobs:
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
         run: |
-          echo Bundle
-          ls /Users/runner/work/github-actions-test/github-actions-test/src-tauri/target/release/bundle
-          echo msi
-          ls /Users/runner/work/github-actions-test/github-actions-test/src-tauri/target/release/bundle/macos
+          brew install tree
+          tree /Users/runner/work/github-actions-test/github-actions-test/src-tauri/target/release/bundle/
 
       - name: Read Bundle Directory (Windows)
         if: matrix.platform == 'windows-latest'
