@@ -73,29 +73,29 @@ jobs:
         run: yarn build
 
       # Run arch tests and choose build options here
-      # - name: Build App (MacOS)
-      #   if: matrix.platform == 'macos-latest'
-      #   run: yarn tauri build --target x86_64-apple-darwin
+      - name: Build App (MacOS)
+        if: matrix.platform == 'macos-latest'
+        run: yarn tauri build --target x86_64-apple-darwin
 
-      # - name: Build App (Windows)
-      #   if: matrix.platform == 'windows-latest'
-      #   run: yarn tauri build
+      - name: Build App (Windows)
+        if: matrix.platform == 'windows-latest'
+        run: yarn tauri build
 
-      # - name: Read Bundle Directory (MacOS)
-      #   if: matrix.platform == 'macos-latest'
-      #   run: |
-      #     echo Bundle
-      #     ls ./src-tauri/target/release/bundle
-      #     echo msi
-      #     ls ./src-tauri/target/release/bundle/macos
+      - name: Read Bundle Directory (MacOS)
+        if: matrix.platform == 'macos-latest'
+        run: |
+          echo Bundle
+          ls /Users/runner/work/github-actions-test/github-actions-test/src-tauri/target/release/bundle
+          echo msi
+          ls /Users/runner/work/github-actions-test/github-actions-test/src-tauri/target/release/bundle/macos
 
-      # - name: Read Bundle Directory (Windows)
-      #   if: matrix.platform == 'windows-latest'
-      #   run: |
-      #     echo Bundle
-      #     dir ./src-tauri/target/release/bundle
-      #     echo msi
-      #     dir ./src-tauri/target/release/bundle/msi
+      - name: Read Bundle Directory (Windows)
+        if: matrix.platform == 'windows-latest'
+        run: |
+          echo Bundle
+          dir ./src-tauri/target/release/bundle
+          echo msi
+          dir ./src-tauri/target/release/bundle/msi
 
       - name: Test
         run: pwd && ls
