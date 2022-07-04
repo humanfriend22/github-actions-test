@@ -99,7 +99,7 @@ jobs:
           echo Bundle
           dir src-tauri/target/release/bundle
           echo msi
-          dir src-tenko/target/release/bundle/msi
+          dir src-tauri/target/release/bundle/msi
 
       # Upload Assets
       - uses: tauri-apps/tauri-action@v0
