@@ -84,6 +84,14 @@ jobs:
       # - name: Build App (Windows)
       #   if: matrix.platform == 'windows-latest'
 
+      - name: Read Bundle Directory (MacOS)
+        if: matrix.platform == 'macos-latest'
+        run: brew install tree && tree src-tauri/target/release
+
+      - name: Read Bundle Directory (Windows)
+        if: matrix.platform == 'windows-latest'
+        run: tree src-tauri/target/release /F
+
       # Upload Assets
       - uses: tauri-apps/tauri-action@v0
         env:
