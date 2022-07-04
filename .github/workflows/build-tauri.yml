@@ -73,16 +73,17 @@ jobs:
         run: yarn build
 
       # Run arch tests and choose build options here
-      # - name: Build App (MacOS)
-      #   if: matrix.platform == 'macos-latest'
-      #   run: |
-      #     rustup target add aarch64-apple-darwin
+      - name: Build App (MacOS)
+        if: matrix.platform == 'macos-latest'
+        run: |
+          rustup target add aarch64-apple-darwin
 
-      #     yarn tauri build --target x86_64-apple-darwin
-      #     yarn tauri build --target aarch64-apple-darwin
+          yarn tauri build --target x86_64-apple-darwin
+          yarn tauri build --target aarch64-apple-darwin
 
-      # - name: Build App (Windows)
-      #   if: matrix.platform == 'windows-latest'
+      - name: Build App (Windows)
+        if: matrix.platform == 'windows-latest'
+        run: yarn build
 
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
