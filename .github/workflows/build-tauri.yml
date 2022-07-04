@@ -84,9 +84,12 @@ jobs:
       # - name: Build App (Windows)
       #   if: matrix.platform == 'windows-latest'
 
+      - name: Install Tree
+        run: brew install tree
+
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
-        run: brew install tree && tree src-tauri/target/release
+        run: cd src-tauri/target/release && tree
 
       - name: Read Bundle Directory (Windows)
         if: matrix.platform == 'windows-latest'
