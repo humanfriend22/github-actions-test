@@ -83,7 +83,7 @@ jobs:
 
       - name: Build App (Windows)
         if: matrix.platform == 'windows-latest'
-        run: yarn build
+        run: yarn tauri build
 
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
