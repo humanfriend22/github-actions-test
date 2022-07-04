@@ -84,16 +84,21 @@ jobs:
       # - name: Build App (Windows)
       #   if: matrix.platform == 'windows-latest'
 
-      - name: Install Tree
-        run: brew install tree
-
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
-        run: cd src-tauri/target/release && tree
+        run: |
+          echo Bundle
+          ls src-tauri/target/release/bundle
+          echo msi
+          ls src-tenko/target/release/bundle/msi
 
       - name: Read Bundle Directory (Windows)
         if: matrix.platform == 'windows-latest'
-        run: tree src-tauri/target/release /F
+        run: |
+          echo Bundle
+          dir src-tauri/target/release/bundle
+          echo msi
+          dir src-tenko/target/release/bundle/msi
 
       # Upload Assets
       - uses: tauri-apps/tauri-action@v0
