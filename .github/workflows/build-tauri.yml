@@ -91,7 +91,7 @@ jobs:
           echo Bundle
           ls src-tauri/target/release/bundle
           echo msi
-          ls src-tenko/target/release/bundle/msi
+          ls src-tauri/target/release/bundle/msi
 
       - name: Read Bundle Directory (Windows)
         if: matrix.platform == 'windows-latest'
