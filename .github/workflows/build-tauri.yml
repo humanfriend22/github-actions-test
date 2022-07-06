@@ -10,7 +10,7 @@ jobs:
       release_id: ${{ steps.create-release.outputs.result }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup NodeJS
         uses: actions/setup-node@v1
         with:
@@ -45,7 +45,7 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup NodeJS
         uses: actions/setup-node@v1
@@ -72,7 +72,7 @@ jobs:
       - name: Build Web
         run: yarn build
 
-      # Run arch tests and choose build options here
+      # Build App
       - name: Build App (MacOS)
         if: matrix.platform == 'macos-latest'
         run: yarn tauri build --target x86_64-apple-darwin
@@ -81,6 +81,7 @@ jobs:
         if: matrix.platform == 'windows-latest'
         run: yarn tauri build
 
+      # Directory Structure of Build
       - name: Read Bundle Directory (MacOS)
         if: matrix.platform == 'macos-latest'
         run: |
@@ -95,15 +96,12 @@ jobs:
           echo msi
           dir ./src-tauri/target/release/bundle/msi
 
-      - name: Test
-        run: pwd && ls
+      # Compress Build
+      - name: Compress Build
+        if: matrix.platform == 'macos-latest'
+        run:
 
       # Upload Assets
-      - uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          releaseId: ${{ needs.create-release.outputs.release_id }}
 
   publish-release:
     runs-on: ubuntu-latest
