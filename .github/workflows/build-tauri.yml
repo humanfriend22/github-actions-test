@@ -81,15 +81,15 @@ jobs:
         if: matrix.platform == 'macos-latest'
         run: |
           rustup target add aarch64-apple-darwin
-          cargo tauri build --target aarch64-apple-darwin
-          cargo tauri build --target x86_64-apple-darwin
+          yarn tauri build --target aarch64-apple-darwin
+          yarn tauri build --target x86_64-apple-darwin
 
       - name: Build (Windows)
         if: matrix.platform == 'windows-latest'
-        run: cargo tauri build
+        run: yarn tauri build
 
       # Compress Assets (MacOS)
-      - name: Compress Assets
+      - name: Compress Assets (MacOS Only)
         if: matrix.platform == 'macos-latest'
         run: |
           tar czf github-actions-test-m1.app.tar.gz -C src-tauri/target/aarch64-apple-darwin/release/bundle/macos github-actions-test.app
