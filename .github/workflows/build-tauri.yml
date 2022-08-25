@@ -3,8 +3,7 @@ name: "Build Tauri"
 on:
   push:
     tags:
-      - "v*"
-
+      - "tauri-v*"
 jobs:
   # create-release:
   #   runs-on: ubuntu-latest
@@ -48,6 +47,8 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
+      # Enter Workspace
+      - run: cd tauri
       # Setup VM
       - uses: actions/checkout@v3
 
