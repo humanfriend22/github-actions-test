@@ -1,14 +1,19 @@
-name: "Print Metadata"
+name: "Build Tauri"
+
+on: [push]
 
 jobs:
-  strategy:
+  build-tauri:
+    # needs: create-release
+    strategy:
       fail-fast: false
       matrix:
         platform: [ubuntu-latest, ubuntu-22.04]
-      runs-on: ${{ matrix.platform }}
-      steps:
-        - name: "Print Metadata"
-          run: |
-            node -v
-            npm -v
-            npx -v
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      # Enter Workspace
+      - run: |
+        node -v
+        npm -v
+        npx -v
