@@ -1,0 +1,14 @@
+name: "Print Metadata"
+
+jobs:
+  strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-latest, ubuntu-22.04]
+      runs-on: ${{ matrix.platform }}
+      steps:
+        - name: "Print Metadata"
+          run: |
+            node -v
+            npm -v
+            npx -v
