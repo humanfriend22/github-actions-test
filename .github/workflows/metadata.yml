@@ -17,3 +17,5 @@ jobs:
           node -v
           npm -v
           npx -v
+          java -version
+          javac -version
