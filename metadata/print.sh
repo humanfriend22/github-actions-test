@@ -6,3 +6,6 @@ echo ""
 
 echo "java $(node -v)"
 echo "javac $(node -v)"
+
+pwd
+ls
