@@ -7,5 +7,9 @@ echo ""
 echo "java $(node -v)"
 echo "javac $(node -v)"
 
+echo ""
+
+echo "mvn -v"
+
 pwd
 ls
